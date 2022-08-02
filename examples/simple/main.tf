@@ -1,21 +1,40 @@
-# This is the default example
-# customise it as you see fit for your example usage of your module
+terraform {
+  required_providers {
+    vault = {
+      source  = "hashicorp/vault"
+      version = "3.8.0"
+    }
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = "2.21.0"
+    }
+  }
+  backend "consul" {
+    path = "terraform/modules/tfmod-digitalocean-vpc"
+  }
+}
 
-# add provider configurations here, for example:
-# provider "aws" {
-#
-# }
+provider "vault" {
+  # Configuration options
+}
 
-# Declare your backends and other terraform configuration here
-# This is an example for using the consul backend.
-# terraform {
-#   backend "consul" {
-#     path = "test_module/simple"
-#   }
-# }
+data "vault_generic_secret" "do" {
+  path = "kv/do"
+}
 
+provider "digitalocean" {
+  token = data.vault_generic_secret.do.data["token"]
+}
 
 module "example" {
   source = "../../"
-  dummy  = "test"
+  project = {
+    name        = "CI"
+    description = "Test project for CI purposes"
+    purpose     = "Continuous integration"
+    environment = "development"
+  }
+  vpc_name        = "ci-vpc"
+  vpc_description = "Test VPC for CI"
+  vpc_region      = "ams2"
 }
