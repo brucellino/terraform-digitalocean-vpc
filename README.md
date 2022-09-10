@@ -14,14 +14,14 @@ These examples show how to use the module in your project, and are also use for 
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >1.2.0 |
-| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | 2.21.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=1.2.0 |
+| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >=2.22.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | 2.21.0 |
+| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >=2.22.2 |
 
 ## Modules
 
@@ -31,8 +31,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [digitalocean_project.p](https://registry.terraform.io/providers/digitalocean/digitalocean/2.21.0/docs/resources/project) | resource |
-| [digitalocean_vpc.vpc](https://registry.terraform.io/providers/digitalocean/digitalocean/2.21.0/docs/resources/vpc) | resource |
+| [digitalocean_project.p](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/project) | resource |
+| [digitalocean_vpc.vpc](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/vpc) | resource |
 
 ## Inputs
 
