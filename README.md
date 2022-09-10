@@ -21,7 +21,7 @@ These examples show how to use the module in your project, and are also use for 
 
 | Name | Version |
 |------|---------|
-| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | 2.21.0 |
+| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >=2.22.2 |
 
 ## Modules
 
