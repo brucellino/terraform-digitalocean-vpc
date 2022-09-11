@@ -11,7 +11,17 @@ sections:
   hide: []
   show: []
 
-content: ""
+content: |-
+  {{ .Header }}
+
+  {{ range .Module.Resources }}
+  {{ .Description }}
+  {{ printf "\n" }}
+  {{- end }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
 
 output:
   file: "docs/README.md"
