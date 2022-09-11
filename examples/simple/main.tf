@@ -19,11 +19,11 @@ provider "vault" {
 }
 
 data "vault_generic_secret" "do" {
-  path = "kv/do"
+  path = "digitalocean/tokens"
 }
 
 provider "digitalocean" {
-  token = data.vault_generic_secret.do.data["token"]
+  token = data.vault_generic_secret.do.data["terraform"]
 }
 
 module "example" {

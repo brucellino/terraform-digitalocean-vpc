@@ -2,7 +2,7 @@
 
 # Terraform Module DigitalOcean VPC
 
-This module createss a DigitalOcean VPC with associated project.
+This module creates a DigitalOcean VPC with associated project.
 
 ## Examples
 
