@@ -15,13 +15,13 @@ These examples show how to use the module in your project, and are also use for 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=1.2.0 |
-| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >=2.22.2 |
+| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >=2.22.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >=2.22.2 |
+| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >=2.22.0 |
 
 ## Modules
 
