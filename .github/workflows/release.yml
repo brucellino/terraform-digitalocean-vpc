@@ -47,6 +47,7 @@ jobs:
   release:
     needs:
       - validate
+      - test
     name: Release
     runs-on: ubuntu-latest
     steps:
