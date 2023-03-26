@@ -38,6 +38,10 @@ jobs:
     runs-on: ubuntu-22.04
     needs:
       - validate
+    env:
+      VAULT_ADDR: "http://localhost:8200"
+      VAULT_TOKEN: "root_token"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -49,6 +53,12 @@ jobs:
           | gunzip -> consul ; chmod u+x consul
       - name: Start Consul dev server
         run: ./consul agent -server -dev &
+      - name: Get Vault
+        run: |
+          curl -fSL https://releases.hashicorp.com/vault/1.13.0/vault_1.13.0_linux_amd64.zip \
+          | gunzip -> vault ; chmod u+x vault
+      - name: Start Vault dev server
+        run: ./vault server -dev -dev-root-token-id=${{ secrets.VAULT_TOKEN }}
       - name: Get Terraform
         run: |
           curl -fSL https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_amd64.zip \
