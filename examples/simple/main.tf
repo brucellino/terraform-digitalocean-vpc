@@ -26,6 +26,12 @@ provider "digitalocean" {
   token = data.vault_generic_secret.do.data["terraform"]
 }
 
+variable "vpc_name" {
+  type        = string
+  default     = "test-example-vpc"
+  description = "name of the VPC to create"
+}
+
 module "example" {
   source = "../../"
   project = {
@@ -34,7 +40,7 @@ module "example" {
     purpose     = "Continuous integration"
     environment = "development"
   }
-  vpc_name        = "ci-vpc"
+  vpc_name        = var.vpc_name
   vpc_description = "Test VPC for CI"
-  vpc_region      = "ams2"
+  vpc_region      = "ams3"
 }
