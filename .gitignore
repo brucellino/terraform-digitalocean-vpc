@@ -33,3 +33,9 @@ package-lock.json
 package.json
 node_modules/
 .terraform.lock.hcl
+
+# Editor cruft
+.vscode
+
+# infracost cruft
+.infracost

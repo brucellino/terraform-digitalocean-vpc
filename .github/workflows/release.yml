@@ -40,7 +40,6 @@ jobs:
       - validate
     env:
       VAULT_ADDR: "http://localhost:8200"
-      VAULT_TOKEN: "root_token"
 
     steps:
       - name: Checkout
@@ -59,6 +58,14 @@ jobs:
           | gunzip -> vault ; chmod u+x vault
       - name: Start Vault dev server
         run: ./vault server -dev -dev-root-token-id=${{ secrets.VAULT_TOKEN }} &
+      - name: Add DO mount
+        run: ./vault secrets enable -path="digitalocean" -description="KV data" kv-v2
+        env:
+          VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
+      - name: Set DO secret
+        run: vault kv put -mount=digitalocean token terraform=${{ secrets.DO_TOKEN }}
+        env:
+          VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
       - name: Get Terraform
         run: |
           curl -fSL https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_amd64.zip \
