@@ -63,7 +63,7 @@ jobs:
         env:
           VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
       - name: Set DO secret
-        run: ./vault kv put -mount=digitalocean token terraform=${{ secrets.DO_TOKEN }}
+        run: ./vault kv put -mount=digitalocean tokens terraform=${{ secrets.DO_TOKEN }}
         env:
           VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
       - name: Get Terraform
