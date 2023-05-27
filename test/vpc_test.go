@@ -16,14 +16,16 @@ func TestVPCAndProject(t *testing.T) {
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: "../examples/simple",
 		PlanFilePath: "test.tfplan",
-		Upgrade: true,
-
+		Upgrade:      true,
+		Vars: map[string]interface{}{
+			"vpc_name": "vpc-test" + os.Getenv("GITHUB_RUN_ID"),
+		},
 	})
 
 	defer terraform.Destroy(t, terraformOptions)
 
 	_, errP := terraform.InitAndPlanE(t, terraformOptions)
-	assert.Nil(t,errP)
+	assert.Nil(t, errP)
 
 	_, errI := terraform.ApplyE(t, terraformOptions)
 	assert.Nil(t, errI)
