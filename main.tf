@@ -9,6 +9,7 @@ resource "digitalocean_project" "p" {
   description = var.project.description
   purpose     = var.project.purpose
   environment = var.project.environment
+  is_default  = var.project.is_default
 }
 
 resource "digitalocean_vpc" "vpc" {

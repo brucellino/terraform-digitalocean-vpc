@@ -25,5 +25,6 @@ variable "project" {
     description = "My project"
     purpose     = "Personal"
     environment = "development"
+    is_default  = "false"
   }
 }
