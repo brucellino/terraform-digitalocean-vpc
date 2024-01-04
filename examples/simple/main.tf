@@ -39,6 +39,7 @@ module "example" {
     description = "Test project for CI purposes"
     purpose     = "Continuous integration"
     environment = "development"
+    is_default  = true
   }
   vpc_name        = var.vpc_name
   vpc_description = "Test VPC for CI"

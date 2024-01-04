@@ -18,13 +18,19 @@ variable "vpc_description" {
 }
 
 variable "project" {
-  type        = map(string)
+  type        = object({
+    name        = string
+    description = string
+    purpose     = string
+    environment = string
+    is_default  = bool
+  })
   description = "Project configuration"
   default = {
     name        = "My_Project"
     description = "My project"
     purpose     = "Personal"
     environment = "development"
-    is_default  = "false"
+    is_default  = false
   }
 }
