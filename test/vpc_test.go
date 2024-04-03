@@ -18,12 +18,13 @@ func TestVPCAndProject(t *testing.T) {
 		PlanFilePath: "test.tfplan",
 		Upgrade:      true,
 		Vars: map[string]interface{}{
-			"vpc_name": "vpc-test" + os.Getenv("GITHUB_RUN_ID"),
+			"vpc_name":     "vpc-test" + os.Getenv("GITHUB_RUN_ID"),
+			"project_name": "ci-" + os.Getenv("GITHUB_RUN_ID"),
 		},
 	})
 
 	defer terraform.Destroy(t, terraformOptions)
-
+	// assert that project is not default
 	_, errP := terraform.InitAndPlanE(t, terraformOptions)
 	assert.Nil(t, errP)
 

@@ -32,14 +32,18 @@ variable "vpc_name" {
   description = "name of the VPC to create"
 }
 
+variable "project_name" {
+  type = string
+}
+
 module "example" {
   source = "../../"
   project = {
-    name        = "CI"
+    name        = var.project_name
     description = "Test project for CI purposes"
     purpose     = "Continuous integration"
     environment = "development"
-    is_default  = true
+    is_default  = false
   }
   vpc_name        = var.vpc_name
   vpc_description = "Test VPC for CI"
