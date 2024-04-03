@@ -18,7 +18,7 @@ variable "vpc_description" {
 }
 
 variable "project" {
-  type        = object({
+  type = object({
     name        = string
     description = string
     purpose     = string
