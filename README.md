@@ -38,7 +38,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_project"></a> [project](#input\_project) | Project configuration | <pre>object({<br>    name        = string<br>    description = string<br>    purpose     = string<br>    environment = string<br>    is_default  = bool<br>  })</pre> | <pre>{<br>  "description": "My project",<br>  "environment": "development",<br>  "is_default": false,<br>  "name": "My_Project",<br>  "purpose": "Personal"<br>}</pre> | no |
+| <a name="input_project"></a> [project](#input\_project) | Project configuration | <pre>object({<br/>    name        = string<br/>    description = string<br/>    purpose     = string<br/>    environment = string<br/>    is_default  = bool<br/>  })</pre> | <pre>{<br/>  "description": "My project",<br/>  "environment": "development",<br/>  "is_default": false,<br/>  "name": "My_Project",<br/>  "purpose": "Personal"<br/>}</pre> | no |
 | <a name="input_vpc_description"></a> [vpc\_description](#input\_vpc\_description) | Description of the VPC | `string` | `"My VPC is the raddest"` | no |
 | <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | Name of the VPC to create | `string` | `"my-vpc"` | no |
 | <a name="input_vpc_region"></a> [vpc\_region](#input\_vpc\_region) | Slug of the digitalocean region | `string` | `"ams3"` | no |
