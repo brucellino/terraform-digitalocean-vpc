@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
-        uses: 'actions/checkout@v4'
+        uses: "actions/checkout@v4"
         with:
           fetch-depth: 0
       - name: Get latest Consul
@@ -31,8 +31,7 @@ jobs:
         run: |
           release_url=$(curl https://api.releases.hashicorp.com/v1/releases/terraform\?limit\=20\&license_class\=oss | jq -r '. | map(select(.is_prerelease == false)) | .[0].builds[] | select (.arch == "amd64" and .os=="linux").url')
           curl -fSL ${release_url} -o terraform.zip
-          unzip -p terraform terraform.zip
-          chmod u+x terraform
+          unzip -o terraform.zip terraform
       - name: Init terraform
         run: ./terraform -chdir=examples/${{ matrix.example }} init
       - name: Validate terraform
@@ -44,7 +43,6 @@ jobs:
       - validate
     env:
       VAULT_ADDR: "http://localhost:8200"
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -70,13 +68,14 @@ jobs:
         run: ./vault kv put -mount=digitalocean tokens terraform=${{ secrets.DO_TOKEN }}
         env:
           VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
-      - name: Get Terraform
+      - name: Get latest Terraform
         run: |
-          curl -fSL https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_amd64.zip \
-          | gunzip -> terraform ; chmod u+x terraform
+          release_url=$(curl https://api.releases.hashicorp.com/v1/releases/terraform\?limit\=20\&license_class\=oss | jq -r '. | map(select(.is_prerelease == false)) | .[0].builds[] | select (.arch == "amd64" and .os=="linux").url')
+          curl -fSL ${release_url} -o terraform.zip
+          unzip -o terraform.zip terraform
       - name: Test
-        run: cd test ; go test
-
+        run: PATH=${PATH}:${PWD}/../ go test
+        working-directory: test
 
   release:
     needs:
@@ -92,7 +91,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version: "lts/*"
       - name: Install dependencies
         run: |
           npm install -D '@semantic-release/commit-analyzer' \
