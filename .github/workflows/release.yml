@@ -30,11 +30,9 @@ jobs:
       - name: Get latest Terraform
         run: |
           release_url=$(curl https://api.releases.hashicorp.com/v1/releases/terraform\?limit\=20\&license_class\=oss | jq -r '. | map(select(.is_prerelease == false)) | .[0].builds[] | select (.arch == "amd64" and .os=="linux").url')
-          echo ${release_url}
           curl -fSL ${release_url} -o terraform.zip
-          ls -lht terraform.zip
-          unzip -p terraform terraform.zip
-          chmod u+x terraform
+          unzip -o terraform.zip terraform
+          # chmod u+x terraform
       - name: Init terraform
         run: ./terraform -chdir=examples/${{ matrix.example }} init
       - name: Validate terraform
