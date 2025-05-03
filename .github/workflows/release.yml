@@ -43,8 +43,6 @@ jobs:
       - validate
     env:
       VAULT_ADDR: "http://localhost:8200"
-      PATH: "${PATH}:{{ github.workspace }}"
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -76,7 +74,8 @@ jobs:
           curl -fSL ${release_url} -o terraform.zip
           unzip -o terraform.zip terraform
       - name: Test
-        run: cd test ; go test
+        run: PATH=${PATH}:${PWD}/../ go test
+        working-directory: test
 
   release:
     needs:
