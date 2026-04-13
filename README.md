@@ -13,14 +13,14 @@ These examples show how to use the module in your project, and are also use for 
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=1.9 |
 | <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >=2.22.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >=2.22.0 |
 
 ## Modules
@@ -30,14 +30,14 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [digitalocean_project.p](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/project) | resource |
 | [digitalocean_vpc.vpc](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/vpc) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_project"></a> [project](#input\_project) | Project configuration | <pre>object({<br/>    name        = string<br/>    description = string<br/>    purpose     = string<br/>    environment = string<br/>    is_default  = bool<br/>  })</pre> | <pre>{<br/>  "description": "My project",<br/>  "environment": "development",<br/>  "is_default": false,<br/>  "name": "My_Project",<br/>  "purpose": "Personal"<br/>}</pre> | no |
 | <a name="input_vpc_description"></a> [vpc\_description](#input\_vpc\_description) | Description of the VPC | `string` | `"My VPC is the raddest"` | no |
 | <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | Name of the VPC to create | `string` | `"my-vpc"` | no |
@@ -46,7 +46,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_vpc_cidr"></a> [vpc\_cidr](#output\_vpc\_cidr) | terraform-digitalocean-vpc outputs |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
 <!-- END_TF_DOCS -->
